@@ -15,6 +15,24 @@ For help on editing plugin code, view the [documentation](https://flutter.io/dev
 ## Installation
 First, add `flutter_appavailability` as a [dependency in your pubspec.yaml file](https://flutter.io/using-packages/).
 
+#### IOS
+Add the package name of the app(s) you would like your app to open to `Info.plist`. Otherwise, `await AppAvailability.checkAvailability` will throw App Not Found PlatformException.
+```
+<key>LSApplicationQueriesSchemes</key> 
+<array> 
+   <string> package_name/app_scheme </string> 
+</array>
+```
+example:
+```
+<key>LSApplicationQueriesSchemes</key> 
+<array> 
+   <string>calshow://</string>
+   <string>fb://</string>
+   <string>whatsapp://</string>
+</array>
+```
+
 ## Methods available
 - `checkAvailability(String uri)`
 - `getInstalledApps()` (only for **Android**)
